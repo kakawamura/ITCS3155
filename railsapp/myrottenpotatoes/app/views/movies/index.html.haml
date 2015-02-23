@@ -1,5 +1,5 @@
 %h1 All Movies
-=debug(@movies)
+-# =debug(@movies)
 
 %table#movies
   %thead 
@@ -8,6 +8,8 @@
       %th Rating 
       %th Release Date 
       %th More Info
+      %th Edit 
+      %th Delete
 
   %tbody
   - @movies.each do |movie|
@@ -16,5 +18,7 @@
       %td= movie.rating 
       %td= movie.release_date 
       %td= link_to "More about #{movie.title}", movie_path(movie)  
+      %td= link_to 'edit', edit_movie_path(movie)
+      %td= link_to 'delete', movie_path(movie), :method => :delete
 
 = link_to 'Add new moives', new_movie_path
